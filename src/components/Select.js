@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 class Select extends Component {
   render() {
+    const { disabled, data, row, getByName } = this.props;
     return (
       <select
-        onChange={Event =>
-          this.props.getByName(this.props.row, Event.target.value)
-        }
+        onChange={Event => getByName(row, Event.target.value , Event.target.selectedOptions[0].innerText)}
+        disabled={disabled}
       >
-        {this.props.data.map(option => (
+        {data.map(option => (
           <option key={option.id} value={option.id}>
             {option.name}
           </option>
